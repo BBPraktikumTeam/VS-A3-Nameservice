@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
-import java.net.InetSocketAddress;
 import java.net.Socket;
 
 final class Communicator extends Thread {
@@ -21,6 +20,7 @@ final class Communicator extends Thread {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		System.out.println("new socket created");
 	}
 
 	@Override
@@ -42,38 +42,55 @@ final class Communicator extends Thread {
 	}
 
 	private void rebind(String[] tokens) {
-		if (tokens.length!=5) {
+		if (tokens.length != 5) {
 			error("rebind: wrong number of params");
 		} else {
-			String name = tokens[1];
-			Class<?> type=null;
+			String name = tokens[1].trim();
+			String type = tokens[2].trim();
+			String host = tokens[3].trim();
+			int port = -1;
 			try {
-				 type = Class.forName(tokens[2]);
-			} catch (ClassNotFoundException e) {
-				error("rebind: class not found: " + tokens[2]);
+				port = Integer.parseInt(tokens[4]);
+			} catch (NumberFormatException e) {
 			}
-			String host = tokens[3];
-			int port = Integer.parseInt(tokens[4]);
-			Nameservice.rebind(new ObjectInfo(name, type, new InetSocketAddress(host, port)));
-			System.out.println("rebind: " + name + "," + type + "," + host + "," + port);
-			out.println("ok");
+			if (name.isEmpty()) {
+				error("rebind: name must not be empty");
+			} else if (type.isEmpty()) {
+				error("rebind: type must not be empty");
+			} else if (host.isEmpty()) {
+				error("rebind: host must not be empty");
+			} else if (port < 0 || port > 65535) {
+				error("rebind: port must be an integer and 0<=port<=65535");
+			} else {
+				Nameservice.rebind(new ObjectInfo(name, type, host, port));
+				System.out.println("rebind: " + name + "," + type + "," + host
+						+ "," + port);
+				out.println("ok");
+			}
 		}
 	}
 
 	private void resolve(String[] tokens) {
-		if (tokens.length!=2) {
+		if (tokens.length != 2) {
 			error("resolve: wrong number of params");
 		} else {
-			String name = tokens[2];
-			ObjectInfo obj = Nameservice.resolve(name);
-			if (obj==null) {
-				System.out.println("resolve: name not found: " + name);
-				out.println("nameNotFound");
+			String name = tokens[1].trim();
+			if (name.isEmpty()) {
+				error("resolve: name must not be empty");
 			} else {
-				Class<?> type = obj.type();
-				InetSocketAddress address = obj.address();
-				System.out.println("resolve: " + name + "," + type + "," + address.getHostName() + "," + address.getPort());
-				out.println("result," + name + "," + type + "," + address.getHostName() + "," + address.getPort());
+				ObjectInfo obj = Nameservice.resolve(name);
+				if (obj == null) {
+					System.out.println("resolve: name not found: " + name);
+					out.println("nameNotFound");
+				} else {
+					String type = obj.type();
+					String host = obj.host();
+					int port = obj.port();
+					System.out.println("resolve: " + name + "," + type + ","
+							+ host + "," + port);
+					out.println("result," + name + "," + type + "," + host
+							+ "," + port);
+				}
 			}
 		}
 	}

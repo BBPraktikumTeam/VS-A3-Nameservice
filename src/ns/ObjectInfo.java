@@ -1,28 +1,36 @@
 package ns;
 
-import java.net.InetSocketAddress;
-
 final class ObjectInfo {
 
 	private final String name;
-	private final Class<?> type;
-	private final InetSocketAddress address;
+	private final String type;
+	private final String host;
+	private final int port;
 
-	ObjectInfo(String name, Class<?> type, InetSocketAddress address) {
+	ObjectInfo(String name, String type, String host, int port) {
+		if (name == null || name.trim().isEmpty() || type == null
+				|| type.trim().isEmpty() || host == null
+				|| host.trim().isEmpty() || port < 0 || port > 65535)
+			throw new IllegalArgumentException();
 		this.name = name;
 		this.type = type;
-		this.address = address;
+		this.host = host;
+		this.port = port;
 	}
-	
+
 	String name() {
 		return name;
 	}
-	
-	Class<?> type() {
+
+	String type() {
 		return type;
 	}
-	
-	InetSocketAddress address() {
-		return address;
+
+	String host() {
+		return host;
+	}
+
+	int port() {
+		return port;
 	}
 }
