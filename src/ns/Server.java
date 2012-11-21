@@ -13,6 +13,7 @@ public final class Server {
 		ServerSocket serverSocket = null;
 		try {
 			serverSocket = new ServerSocket(port);
+			System.out.println("Nameserver ready");
 			while (true) {
 				Socket socket = serverSocket.accept();
 				Communicator comm = new Communicator(socket);

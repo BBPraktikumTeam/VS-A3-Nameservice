@@ -7,12 +7,14 @@ import java.io.PrintWriter;
 import java.net.Socket;
 
 final class Communicator extends Thread {
+	private final Socket socket;
 	private PrintWriter out;
 	private BufferedReader in;
 	private String inputLine;
 	private String[] inputTokens;
 
 	Communicator(Socket socket) {
+		this.socket=socket;
 		try {
 			out = new PrintWriter(socket.getOutputStream(), true);
 			in = new BufferedReader(new InputStreamReader(
@@ -20,13 +22,14 @@ final class Communicator extends Thread {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		System.out.println("new socket created");
+//		System.out.println("new socket created");
 	}
 
 	@Override
 	public void run() {
 		try {
-			while ((inputLine = in.readLine()) != null) {
+			System.out.println("Communicator started");
+			while (!socket.isClosed() && ((inputLine = in.readLine()) != null)) {
 				inputTokens = inputLine.split(",");
 				if (inputTokens[0].equals("rebind")) {
 					rebind(inputTokens);
@@ -36,9 +39,13 @@ final class Communicator extends Thread {
 					error("unknown command: " + inputTokens[0]);
 				}
 			}
-			System.out.println("Communicator stopped");
+			in.close();
+			out.close();
+			socket.close();
 		} catch (IOException e) {
-			e.printStackTrace();
+//			e.printStackTrace();
+		} finally {
+			System.out.println("Communicator stopped");
 		}
 	}
 
