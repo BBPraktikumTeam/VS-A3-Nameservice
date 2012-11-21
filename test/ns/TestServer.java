@@ -31,7 +31,7 @@ public class TestServer {
 				Server.main(args);
 			}
 		}.start();
-
+		
 		clientSocket1 = new Socket("localhost", SERVER_PORT);
 		out1 = new PrintWriter(clientSocket1.getOutputStream(), true);
 		in1 = new BufferedReader(new InputStreamReader(
