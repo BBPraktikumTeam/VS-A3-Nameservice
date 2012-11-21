@@ -36,6 +36,7 @@ final class Communicator extends Thread {
 					error("unknown command: " + inputTokens[0]);
 				}
 			}
+			System.out.println("Communicator stopped");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -97,6 +98,6 @@ final class Communicator extends Thread {
 
 	private void error(String message) {
 		System.out.println("ERROR: " + message);
-		out.println("ERROR: " + message);
+		out.println("Exception," + message);
 	}
 }

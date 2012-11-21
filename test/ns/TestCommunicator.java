@@ -59,7 +59,7 @@ public class TestCommunicator {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		assertTrue(inLine.startsWith("ERROR"));
+		assertTrue(inLine.startsWith("Exception"));
 
 		out.println("rebind,name01");
 		try {
@@ -67,7 +67,7 @@ public class TestCommunicator {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		assertTrue(inLine.startsWith("ERROR"));
+		assertTrue(inLine.startsWith("Exception"));
 
 		out.println("rebind,name02,java.lang.String");
 		try {
@@ -75,7 +75,7 @@ public class TestCommunicator {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		assertTrue(inLine.startsWith("ERROR"));
+		assertTrue(inLine.startsWith("Exception"));
 
 		out.println("rebind,name03,java.lang.String,nowhere.com");
 		try {
@@ -83,7 +83,7 @@ public class TestCommunicator {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		assertTrue(inLine.startsWith("ERROR"));
+		assertTrue(inLine.startsWith("Exception"));
 
 		out.println("rebind,name05,java.lang.String,nowhere.com,12345,bullshit");
 		try {
@@ -91,7 +91,7 @@ public class TestCommunicator {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		assertTrue(inLine.startsWith("ERROR"));
+		assertTrue(inLine.startsWith("Exception"));
 	}
 
 	@Test
@@ -102,7 +102,7 @@ public class TestCommunicator {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		assertTrue(inLine.startsWith("ERROR"));
+		assertTrue(inLine.startsWith("Exception"));
 
 		out.println("rebind,   ,java.lang.String,nowhere.com,12345");
 		try {
@@ -110,7 +110,7 @@ public class TestCommunicator {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		assertTrue(inLine.startsWith("ERROR"));
+		assertTrue(inLine.startsWith("Exception"));
 	}
 
 	@Test
@@ -121,7 +121,7 @@ public class TestCommunicator {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		assertTrue(inLine.startsWith("ERROR"));
+		assertTrue(inLine.startsWith("Exception"));
 
 		out.println("rebind,name07,   ,nowhere.com,12345");
 		try {
@@ -129,7 +129,7 @@ public class TestCommunicator {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		assertTrue(inLine.startsWith("ERROR"));
+		assertTrue(inLine.startsWith("Exception"));
 	}
 
 	@Test
@@ -140,7 +140,7 @@ public class TestCommunicator {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		assertTrue(inLine.startsWith("ERROR"));
+		assertTrue(inLine.startsWith("Exception"));
 
 		out.println("rebind,name09,java.lang.String,   ,12345");
 		try {
@@ -148,7 +148,7 @@ public class TestCommunicator {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		assertTrue(inLine.startsWith("ERROR"));
+		assertTrue(inLine.startsWith("Exception"));
 	}
 
 	@Test
@@ -159,7 +159,7 @@ public class TestCommunicator {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		assertTrue(inLine.startsWith("ERROR"));
+		assertTrue(inLine.startsWith("Exception"));
 
 		out.println("rebind,name08,java.lang.String,nowhere.com,65536");
 		try {
@@ -167,7 +167,7 @@ public class TestCommunicator {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		assertTrue(inLine.startsWith("ERROR"));
+		assertTrue(inLine.startsWith("Exception"));
 
 		out.println("rebind,name08,java.lang.String,nowhere.com,2.0");
 		try {
@@ -175,7 +175,7 @@ public class TestCommunicator {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		assertTrue(inLine.startsWith("ERROR"));
+		assertTrue(inLine.startsWith("Exception"));
 
 		out.println("rebind,name08,java.lang.String,nowhere.com,null");
 		try {
@@ -183,7 +183,7 @@ public class TestCommunicator {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		assertTrue(inLine.startsWith("ERROR"));
+		assertTrue(inLine.startsWith("Exception"));
 	}
 
 	@Test
@@ -195,7 +195,7 @@ public class TestCommunicator {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		assertTrue(inLine.startsWith("ERROR"));
+		assertTrue(inLine.startsWith("Exception"));
 
 		out.println("rebind,name00,bullshit");
 		try {
@@ -203,7 +203,7 @@ public class TestCommunicator {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		assertTrue(inLine.startsWith("ERROR"));
+		assertTrue(inLine.startsWith("Exception"));
 	}
 
 	@Test
@@ -214,7 +214,7 @@ public class TestCommunicator {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		assertTrue(inLine.startsWith("ERROR"));
+		assertTrue(inLine.startsWith("Exception"));
 
 		out.println("resolve,   ,");
 		try {
@@ -222,7 +222,7 @@ public class TestCommunicator {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		assertTrue(inLine.startsWith("ERROR"));
+		assertTrue(inLine.startsWith("Exception"));
 	}
 
 	@Test
@@ -260,7 +260,7 @@ public class TestCommunicator {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		assertTrue(inLine.startsWith("ERROR"));
+		assertTrue(inLine.startsWith("Exception"));
 
 		out.println("rebinde,name51,java.lang.Object,nowhere.com,12345");
 		try {
@@ -268,7 +268,7 @@ public class TestCommunicator {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		assertTrue(inLine.startsWith("ERROR"));
+		assertTrue(inLine.startsWith("Exception"));
 
 		out.println("resolv,name");
 		try {
@@ -276,7 +276,7 @@ public class TestCommunicator {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		assertTrue(inLine.startsWith("ERROR"));
+		assertTrue(inLine.startsWith("Exception"));
 
 		out.println("resolver,name");
 		try {
@@ -284,7 +284,7 @@ public class TestCommunicator {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		assertTrue(inLine.startsWith("ERROR"));
+		assertTrue(inLine.startsWith("Exception"));
 
 		out.println("bullshit");
 		try {
@@ -292,6 +292,6 @@ public class TestCommunicator {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		assertTrue(inLine.startsWith("ERROR"));
+		assertTrue(inLine.startsWith("Exception"));
 	}
 }

@@ -64,7 +64,7 @@ public class TestServer {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		assertTrue(inLine1.startsWith("ERROR"));
+		assertTrue(inLine1.startsWith("Exception"));
 
 		out2.println("rebind");
 		try {
@@ -72,7 +72,7 @@ public class TestServer {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		assertTrue(inLine2.startsWith("ERROR"));
+		assertTrue(inLine2.startsWith("Exception"));
 	}
 
 	@Test
