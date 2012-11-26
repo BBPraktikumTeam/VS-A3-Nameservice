@@ -70,7 +70,7 @@ final class Communicator extends Thread {
 			} else if (port < 0 || port > 65535) {
 				error("rebind: port must be an integer and 0<=port<=65535");
 			} else {
-				Nameservice.rebind(new ObjectInfo(name, type, host, port));
+				NameserviceDb.rebind(new ObjectInfo(name, type, host, port));
 				System.out.println("rebind: " + name + "," + type + "," + host
 						+ "," + port);
 				out.println("ok");
@@ -86,7 +86,7 @@ final class Communicator extends Thread {
 			if (name.isEmpty()) {
 				error("resolve: name must not be empty");
 			} else {
-				ObjectInfo obj = Nameservice.resolve(name);
+				ObjectInfo obj = NameserviceDb.resolve(name);
 				if (obj == null) {
 					System.out.println("resolve: name not found: " + name);
 					out.println("nameNotFound");

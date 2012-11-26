@@ -28,7 +28,7 @@ public class TestServer {
 		final String[] args = { String.valueOf(SERVER_PORT) };
 		new Thread() {
 			public void run() {
-				Server.main(args);
+				Launcher.main(args);
 			}
 		}.start();
 		

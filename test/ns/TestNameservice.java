@@ -17,13 +17,13 @@ public class TestNameservice {
 
 	@Test
 	public void rebind() {
-		Nameservice.rebind(obj1);
+		NameserviceDb.rebind(obj1);
 	}
 
 	@Test
 	public void resolve() {
-		assertNull(Nameservice.resolve(obj2.name()));
-		Nameservice.rebind(obj2);
-		assertEquals(obj2, Nameservice.resolve(obj2.name()));
+		assertNull(NameserviceDb.resolve(obj2.name()));
+		NameserviceDb.rebind(obj2);
+		assertEquals(obj2, NameserviceDb.resolve(obj2.name()));
 	}
 }
